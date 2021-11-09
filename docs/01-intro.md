@@ -18,27 +18,61 @@ nav_order: 1
 </details>
 
 ---
-Las bases de datos son las herramientas para almacenar y explotar los datos. Cada tipo de base de datos tiene su propia forma de ver el mundo y solucionar problemas de forma diferente [[1]](references#1){: #references-1 }. Algunas asegurando que las transacciones sean seguramente procesadas [[2]](references#2){: #references-2 } y otras enfocadas en velocidad para aplicaciones que comparten información en tiempo real como los video juegos o IoT [[3]](references#3){: #references-3 }. Incluso existen bases de datos para almacenar cierto tipo de información como geográfica o biológicas.
+Las bases de datos son las herramientas para almacenar y explotar los datos para obtener información. Existen muchos tipos de bases de datos, cada tipo de base de datos tiene su propia forma de ver el mundo y solucionar problemas de forma diferente [[1]](references#1){: #references-1 }. Algunas asegurando que las transacciones sean seguramente procesadas [[2]](references#2){: #references-2 } y otras enfocadas en velocidad para aplicaciones en tiempo real como los video juegos o Internet de las cosas (IoT) [[3]](references#3){: #references-3 }. Incluso existen bases de datos para almacenar información geográfica, biológicas u otras.
 
-En este módulo exploraremos el mundo de los datos desde las bases de datos relacionales (RDB). Un enfoque que ha tenido éxito desde hace más de 40 años y que sigue en pleno apogeo. Es el modelo de bases de datos más frecuente con muchísimas aplicaciones en la práctica real. Compañías pequeñas y grandes hacen uso día a día de sistemas de base de datos relacionales (RDBMS). Este tipo de bases de datos utiliza un sistema basado en teoría de conjuntos implementado en tablas con filas y columnas de *tipado* obligatorio [[1]](references#1){: #references-1 }. Para interactuar con el sistema se utiliza el lenguaje de propósito específico SQL. Con SQL declararemos que operaciones efectuar sobre la base de datos. Estas operaciones (CRUD) pueden ser sobre datos u otros elementos del sistema como tablas, campos, usuarios o bases de datos completas. Es decir, un RDBMS puede albergar y gestionar cientos de bases de datos, usuarios y grupos. El RDBMS es una aplicación sofisticada comparable a un sistema operativo y se caracterizan por garantizar la durabilidad consistencia de la información.
+En este módulo exploraremos el mundo de los datos desde las bases de datos relacionales (RDB). Un enfoque que ha tenido éxito desde hace más de 40 años y que sigue en pleno apogeo. Es el modelo de bases de datos más frecuente con muchísimas aplicaciones en la práctica real. Compañías pequeñas y grandes hacen uso día a día de sistemas de base de datos relacionales (RDBMS). Este tipo de bases de datos utiliza un sistema basado en teoría de conjuntos implementado en tablas con filas y columnas de **tipado obligatorio** [[1]](references#1){: #references-1 }. Para interactuar con el sistema se utiliza el lenguaje de propósito específico SQL (Structured Query Language). Con SQL declararemos que operaciones efectuar sobre la base de datos. Estas operaciones (tipo CRUD) pueden ser sobre datos u otros elementos del sistema como tablas, campos, usuarios o bases de datos completas. Es decir, un RDBMS puede albergar y gestionar cientos de bases de datos, usuarios y grupos. El RDBMS es una aplicación sofisticada comparable a un sistema operativo y se caracterizan por garantizar la durabilidad y consistencia de la información cuando son utilizadas correctamente.
 
-Los sistemas de bases de datos relacionales se caracterizan por seguir un enfoque que requiere primero el diseño de la base de datos antes de ingresar la información [[1]](references#1){: #references-1 }. En otras palabras, primero debe estar definido el "esquema" antes de ingresar la información
+Los sistemas de bases de datos relacionales se caracterizan por seguir un enfoque que requiere primero el diseño de las tablas antes de ingresar la información [[1]](references#1){: #references-1 }. En otras palabras, primero debe estar definido el "esquema" antes de ingresar la información.
 
-Utilizaremos PostgreSQL como RDBMS para aprender los principales conceptos relacionados a las bases de datos relacionales. PostgreSQL o Postgres es un motor de bases de datos relacional muy soficticado con funcionalidades avanzadas que incluso superan a otras soluciones privadas.
+En los laboratorios utilizaremos PostgreSQL como RDBMS para aprender los principales conceptos relacionados a las bases de datos relacionales. PostgreSQL o Postgres es un motor de bases de datos relacional muy sofisticado con funcionalidades avanzadas que incluso superan a otras soluciones privadas.
 
+Antes de ir a la práctica revisaremos los conceptos generales que luego aplicaremos en los laboratorios.
+
+## Base de datos
+
+Una colección coherente de datos relacionados para satisfacer necesidades específicas de un grupo de usuarios o aplicaciones. Usualmente ayudan a representar algún aspecto el mundo real que en base a acontecimientos (hacer una compra o el nacimiento de un bebé) cambia o actualiza el estado de la base de datos. Para que la información represente lo mejor posible el fenómeno real que quiere modelar es importante que los eventos se reflejen en los datos tan pronto como sea posible.
 
 ## Dato
+
 Hecho que puede ser registrado y que tiene valor implícito[[4]](references#4){: #references-4 }.
-## Tabla
-Conjunto de registros utilizando filas y columnas. Las columnas tienen un nombre y un tipo. Las tablas tienen un número predefinido de columnas con un número indeterminado de filas que puede ir cambiando en el tiempo. Cada celda es la intersección de una fila con una columna que contiene un dato.
+
+## Relational Database Management System (RDBMS)
+
+Aplicaciones de software que ayudan a gestionar bases de datos. Pueden ser simples (SQLite) a muy sofisticados (PostgreSQL). Los sistemas de bases de datos, además de guardar los datos, guardan también la información de los tipos de datos de cada columna y las restricciones para ingresar o modificar registros (metadata). Otra característica muy importante de estos sistemas es la capacidad de controlar acciones concurrentes que intenten actualizar o modificar información simultáneamente.
+
+## Tablas (relaciones)
+
+Conjunto de registros del mismo tipo utilizando filas y columnas. Las columnas tienen un nombre y un tipo determinado. Las tablas tienen un número predefinido de columnas con un número indeterminado de filas que puede ir cambiando en el tiempo. Cada celda es la intersección de una fila con una columna que contiene un dato. Las tablas se pueden unir, mediante teoría de conjuntos, para formar relaciones más complejas.
+
 ## Campo, atributo o columna
+
 Una columna de una tabla. Debe ser de un tipo de dato pre definido y opcionalmente con restricciones (constrains). Por ejemplo admitir valores nulos u otras validaciones mucho más sofisticadas.
+
 ## Registro, fila o instancia
+
 Una fila de una tabla con los valores de todos los campos.
-## Base de datos
-Una colección relacionada de datos para satisfacer una necesidad específica de un grupo de usuarios o aplicaciones.
-## RDBMS
-Aplicaciónes que ayudan a gestionar bases de datos. Pueden ser simples (SQLite) a muy sofisticados (PotgreSQL)
+
+## Query
+
+Es un término genérico para referirse a una interacción con la base de datos mediante SQL. Usualmente involucran la recopilación de parte de los datos. También se puede referir a lo mismo usando el término **consulta**.
+
+## Llave primaria
+
+Valor único no nulo que identifica específicamente un registro de una relación (tabla). Para asegurar la **restricción de integridad de la entidad** la llave primaria no puede tener valor nulo.
+
+## Lave foránea
+
+Valor de un campo en un registro que referencia a una llave primaria en otra tabla o relación. Para asegurar la **restricción de integridad referencial**, el valor de la llave foránea debe existir previamente.
+
+## Relaciones y cardinalidades
+
+La gran fortaleza de las bases de dato relacionales es que si están normalizadas (sin redundancia y con cada registro dependiente solo de la llave primaria) se pueden unir tablas utilizando las llaves foraneas y primarias, dando origen a relaciones entre registros. Estas relaciones pueden ser clasificadas segun su cardinalidad: **1 a 1**, **1 a N** y **N a N** (en rigor el recorrido de estas relaciones podría partir de cero).
+
+## Índices
+
+Estructura de dato especial de las bases de datos relacionales para que al buscar un registro no se tenga que leer la relación completa, sino que es el índice el que guarda la ubicación de los registros. Sin índices, cada registro debe ser leido para saber si una consulta debe retornarlo.
+
+Algunos motores de base de datos como Postgresql crean indices para las llaves primarias y los campos marcados como únicos.
 
 ## Ejemplo de tabla
 
@@ -66,7 +100,7 @@ Invoices Table
 
 Invoice Details Table
 
-| Invoice  Item     | Quantity |
+| Invoice | Item     | Quantity |
 |---------|----------|----------|
 | 100     | TV Led   | 10       |
 | 100     | Keyboard | 15       |
@@ -78,36 +112,4 @@ En las bases de datos relacionales la información se almacena en diferentes tab
 
 - **Flexibilidad:** las tablas son específicas para cierta parte de la información y cada tabla puede ser modificada sin afectar las otras tablas de la base de datos.
 - **Menos Duplicación:** cada tabla tiene el mínimo de datos para reflejar la información.
-- **Mejor Organización:** podemos definir diferentes relaciones entre tablas para presentar la información de formas diferentes y cada tabla responsable de una parte de la información. 
-
-## Diseño de bases de datos
-
-El diseño de bases de datos es algo que requiere de experiencia y conocer las posibilidades que los RDBMS nos entregan para organizar la información (tipos de datos disponibles, restricciones,índices, entre otros). De todas formas existen una serie de pasos que podemos seguir para aproximarnos a un diseño que nos permita cumplir con la finalidad de la base de datos.
-
-Un buen diseño de base de datos puede facilitar mucho la implementación de aplicaciones o generación de reportes a partir de los datos almacenados, mientras que un mal diseño puede entorpecer mucho la obtención de información útil a partir de los datos. Es por esto que es importante invertir tiempo en diseñar un buen esquema de bases de datos.
-
-Hoy, cuando todas las aplicaciones y soluciones tecnológicas deben estar preparadas para afrontar el cambio, se han desarrollado metodologías que permiten ir evolucionando el diseño en la medida que las necesidades cambian. En general se puede ir modelando la base de datos con archivos gestionados con sistemas de control de versiones que permiten guardar toda la evolución de la base de datos desde su concepción hasta las ultimas modificaciones que se van agregando en la medida que la solución agrega nuevas funcionalidades. En los laboratorios tomaremos este enfoque, generando scripts ordenados que introducen cambios paulatinos, reversibles y discretos. A estos archivos se les conoce con el nombre de *migraciones*. Hablaremos más de las *migraciones* en los siguientes laboratorios.
-
-### Diseño conceptual: Finalidad de la base de datos
-  
-  Pensar en qué información se desea obtener de los datos y hablar con las personas que más conocen el problema. Tener una buena idea de qué preguntas se quieren responder con la base de datos, realizar bocetos de los informes que se quieren obtener y examinar los documentos físicos (facturas, ordenes de compra, fichas clínicas, etc) que se usan o usaban para resolver el problema con anterioridad. Examinar otras bases de datos similares también es de gran ayuda.
-
-  En esta etapa trabajaremos principalmente con entidades o las *cosas* que modela nuestra base de datos y como estas entidades *operan* entre ellas. Por ejemplo: *Un usuario crea un tweet* o *Un estudiante obtiene una calificación en un curso*. Esto lo representaremos con diagramas simples a nivel de boceto, pero permite identificar a los actores principales y las acciones que generan datos.
-
-### Determinar las Tablas
-
-En general cada entidad del problema tendrá su propia tabla. Existen convenciones simples que nos pueden acercar bastante a un buen diseño de una tabla: Los nombres de las tablas deben ser en **plural**, ya que su propósito es albergar *varios* registros del mismo tipo. Las tablas intermedias (para relacionar tres o más tablas) también deberían tener nombres semanticos en lo posible por ejemplo en lugar de tener la tabla **Doctores-pacientes** tener la tabla **Consultas**.
-
-### Determinar los Campos
-
-Los nombres de los capos deben estar bien definidos y tener un significado intrínseco, es decir, no utilizar nombres de campos del tipo **dirección 1** o **dirección 2**, sino que **Dirección de facturación** o **Dirección de despacho**. Otra regla es evitar campos que son el resultado de operar otros campos.
-
-### Determinar las relaciones entre tablas (cardinalidad)
-
-Es muy común encontrar relaciones del tipo 1-1, 1-N y N a N entre nuestras entidades que podemos reflejar en las bases de datos mediante llaves primarias y llaves foraneas. Es muy importante pensar bien el tipo de relaciones existentes entre las entidades y revisar que nuestro esquema puede soportar esas relaciones.
-
-### Identificar las llaves primarias y foráneas
-
-Una vez identificadas las relaciones entre las entidades debemos identificar los campos que serán de nexo entre las tablas. 
-
-### Agregar y probar
+- **Mejor Organización:** podemos definir diferentes relaciones entre tablas para presentar la información de formas diferentes y cada tabla responsable de una parte de la información.

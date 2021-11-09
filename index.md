@@ -9,7 +9,7 @@ nav_order: 0
 Modelar y operar una base de datos para soportar las necesidades de información en aplicaciones de software
 
 |---|:---|
-| Horas                 | 9 |
+| Horas                 | 12 |
 | Clases (laboratorios) | 4 |
 | Unidades              | 5 |
 
