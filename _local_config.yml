@@ -1,0 +1,7 @@
+# Local Setting
+baseurl: ""
+url: ""
+logo: "https://res.cloudinary.com/boolean-spa/image/upload/v1620172881/logo-horizontal_hqou69.png"
+# Theme
+theme: "just-the-docs"
+# remote_theme: pmarsceill/just-the-docs
