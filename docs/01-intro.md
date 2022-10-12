@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Distintos datos, distintas bases, distintos usos"
+title: "Introducción a las Bases de Datos"
 nav_order: 1
 ---
 
@@ -113,3 +113,78 @@ En las bases de datos relacionales la información se almacena en diferentes tab
 - **Flexibilidad:** las tablas son específicas para cierta parte de la información y cada tabla puede ser modificada sin afectar las otras tablas de la base de datos.
 - **Menos Duplicación:** cada tabla tiene el mínimo de datos para reflejar la información.
 - **Mejor Organización:** podemos definir diferentes relaciones entre tablas para presentar la información de formas diferentes y cada tabla responsable de una parte de la información.
+
+## Primeros pasos en SQL
+
+> ATENCIÓN: Para seguir el laboratorio debe instalar el motor de bases de datos [PostgreSQL](https://www.postgresql.org/download/) para el sistema operativo que esté operando. No es necesario instalar ni descargar la opción Stack Builder. Para los usuarios de Ubuntu o Debian pueden seguir la siguientes instrucciones del apartado [guía de instalación simple](#instrucciones-de-instalación-simple-para-ubuntu-lts)
+
+Clona y sigue las instrucciones del repositorio asignado como tarea. Luego intenta contestar las siguientes preguntas:
+
+- ¿Que significan los caracteres `--` al comienzo de una línea?
+- ¿Cómo se hacen los comentarios de varias líneas?
+- Nunca es bueno ejecutar `DROP DATABASE`. ¿Por qué lo hacemos?
+- ¿SQL es un lenguaje que se escribe con mayúsculas o minúsculas?
+- ¿Qué pasa si no agrego `;` al final de la sentencia?
+
+Luego ingresa el siguiente código en el archivo 01-createCitiesTable.sql
+
+```sql
+\c bigcities
+
+DROP TABLE IF EXISTS cities;
+
+CREATE TABLE cities(
+    id INTEGER,
+    name VARCHAR(30),
+    country VARCHAR(30),
+    population INTEGER,
+    area INTEGER,
+    PRIMARY KEY(id)
+);
+```
+
+Leer y analizar detenidamente cada línea del archivo buscando entender cada una de las palabras y su consecuencia.
+
+Ejecutar el archivo en la terminal de postgres, ejecutar los siguientes comandos y entender su uso:
+
+\l: Lista las bases de datos
+\c: Conecta con la base de datos
+\dt: Lista las tablas 
+\d <tabla>: Descripción de la tabla
+
+## Instrucciones de instalación simple para Ubuntu LTS
+
+- Como buena práctica, nos aseguramos de tener el listado de repositorios actualizados antes de hace una nueva instalación:
+
+`$ sudo apt update`
+
+- Instalar el servidor en nuestro entorno de desarrollo.
+
+
+ `$ sudo apt install postgresql postgresql-contrib`
+
+- Opcional, pero recomendado pgAdmin. Estas instrucciones las obtenemos desde su documentación oficial. Si no tienes curl instalado, la terminal te indicará cómo obtenerlo. (Nota de edición: La segunda instrucción es una sola línea de comando. Por temas de espacio parecen dos). 
+
+`$ curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add`
+
+`$ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'`
+
+
+`sudo apt install pgadmin4-desktop`
+
+
+Configuración simple, sin accesos remotos. Crearemos un super usuario con el mismo nombre que el usuario actual del sistema operativo (tú, el administrador) que está referenciado por la constante $USER. Además se crea una base de datos con ese mismo nombre y luego nos conectamos al servidor usando la terminal.
+`$ sudo -u postgres createuser --superuser $USER`
+`$ sudo -u postgres createdb $USER`
+`$ sudo -u postgres psql`
+
+
+Esto iniciará una sesión de psql en la terminal con el usuario postgres (creado durante la instalación). Acá ingresamos el siguiente comando para establecer una contraseña al usuario que estamos creando. 
+
+`\password $USER`
+
+
+ Con estos pasos, en el futuro para iniciar una sesión interactiva solo será necesario el siguiente comando:
+
+`$ psql`
+
