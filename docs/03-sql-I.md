@@ -57,7 +57,7 @@ CREATE TABLE cities(
 
 ## Tipos de datos.
 
-[link documentación][https://www.postgresql.org/docs/current/datatype.html]
+[link documentación](https://www.postgresql.org/docs/current/datatype.html])
 
 ## Insertar datos
 ```sql
