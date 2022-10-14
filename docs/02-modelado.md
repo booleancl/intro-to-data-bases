@@ -56,3 +56,5 @@ Una vez identificadas las relaciones entre las entidades debemos identificar los
 ## Diseño lógico y diagrame entidad relación
 
 ## Diseño físico
+
+## Normalización y desnormalización

@@ -36,6 +36,9 @@ Una colección coherente de datos relacionados para satisfacer necesidades espec
 
 Hecho que puede ser registrado y que tiene valor implícito[[4]](references#4){: #references-4 }.
 
+![Boleta de ejemplo](https://www.sii.cl/ayudas/apps/eboleta/img/pantalla-4.jpg)
+En una boleta podemos encontrar muchos datos.
+
 ## Relational Database Management System (RDBMS)
 
 Aplicaciones de software que ayudan a gestionar bases de datos. Pueden ser simples (SQLite) a muy sofisticados (PostgreSQL). Los sistemas de bases de datos, además de guardar los datos, guardan también la información de los tipos de datos de cada columna y las restricciones para ingresar o modificar registros (metadata). Otra característica muy importante de estos sistemas es la capacidad de controlar acciones concurrentes que intenten actualizar o modificar información simultáneamente.
