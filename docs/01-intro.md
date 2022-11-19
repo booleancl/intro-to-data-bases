@@ -155,7 +155,7 @@ Ejecutar el archivo en la terminal de postgres, ejecutar los siguientes comandos
 \dt: Lista las tablas 
 \d <tabla>: Descripción de la tabla
 
-## Instrucciones de instalación simple para Ubuntu LTS
+## Instalación simple de Postgres para Ubuntu LTS
 
 - Como buena práctica, nos aseguramos de tener el listado de repositorios actualizados antes de hace una nueva instalación:
 
@@ -186,6 +186,7 @@ Esto iniciará una sesión de psql en la terminal con el usuario postgres (cread
 
 `\password $USER`
 
+  >**Nota**: puedes ignorar el error ERROR:  role "$user" does not exist. 
 
  Con estos pasos, en el futuro para iniciar una sesión interactiva solo será necesario el siguiente comando:
 
